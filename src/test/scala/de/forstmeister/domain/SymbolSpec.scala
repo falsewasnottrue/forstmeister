@@ -8,14 +8,12 @@ class SymbolSpec extends FlatSpec with Matchers {
     val v1 = VariableSymbol("v1")
     v1.isVariable should be(true)
     v1.name should be("v1")
-    v1.id should be(1)
   }
 
   it should "autogenerate a name" in {
     val v2 = VariableSymbol()
     v2.isVariable should be(true)
-    v2.name should be("x2")
-    v2.id should be(2)
+    v2.name should be("x" + v2.id)
   }
 
   it should "not allow duplicate names" in {
@@ -41,7 +39,7 @@ class SymbolSpec extends FlatSpec with Matchers {
     v1 should be(None)
   }
 
-  "FunctionSymbol" should "not be a variable" in {
+  "FunctionSymbols" should "not be a variable" in {
     val f = FunctionSymbol("f", 1)
     f.isVariable should be(false)
   }
