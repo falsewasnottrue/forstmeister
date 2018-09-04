@@ -40,4 +40,9 @@ class SymbolSpec extends FlatSpec with Matchers {
     val v1 = VariableSymbol.findByName("gibtsnicht")
     v1 should be(None)
   }
+
+  "FunctionSymbol" should "not be a variable" in {
+    val f = FunctionSymbol("f", 1)
+    f.isVariable should be(false)
+  }
 }

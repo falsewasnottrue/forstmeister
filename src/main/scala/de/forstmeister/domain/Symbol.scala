@@ -1,7 +1,5 @@
 package de.forstmeister.domain
 
-import de.forstmeister.domain.VariableSymbol.usedNames
-
 import scala.collection.mutable
 
 sealed trait Symbol {
@@ -15,7 +13,10 @@ sealed trait Symbol {
   def equals(other: Symbol): Boolean = isVariable == other.isVariable && id == other.id
 }
 
+
 class VariableSymbol(val name: String, val id: Int) extends Symbol {
+  import de.forstmeister.domain.VariableSymbol.{counter, usedNames}
+
   if (usedNames.keySet.contains(name)) {
     throw new IllegalArgumentException(s"Variable with Name $name already exists")
   }
@@ -25,21 +26,34 @@ class VariableSymbol(val name: String, val id: Int) extends Symbol {
 }
 
 object VariableSymbol {
-
   def apply(name: String) = new VariableSymbol(name, nextId)
   def apply() = {
     val id = VariableSymbol.nextId
     new VariableSymbol("x" + id, id)
   }
 
-  private var counter: Int = 0
   private val usedNames = mutable.HashMap[String, VariableSymbol]()
-
   def findByName(name: String): Option[VariableSymbol] = usedNames.get(name)
 
-  def nextId = {
+  private var counter: Int = 0
+  private def nextId = {
     counter = counter + 1
     counter
   }
 }
-// TODO FunctionSymbo
+
+
+class FunctionSymbol(val name: String, val id: Int, val arity: Int) extends Symbol {
+  override def isVariable: Boolean = false
+}
+
+object FunctionSymbol {
+  def apply(name: String) = new FunctionSymbol(name, nextId, 0)
+  def apply(name: String, arity: Int) = new FunctionSymbol(name, nextId, arity)
+
+  private var counter: Int = 0
+  private def nextId = {
+    counter = counter + 1
+    counter
+  }
+}
