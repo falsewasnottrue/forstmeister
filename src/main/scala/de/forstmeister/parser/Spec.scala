@@ -12,8 +12,8 @@ case object MODE_TERMINATION extends Mode
 
 case class Spec(
   name: String,
-  // TODO remove default values
-  mode: Mode = MODE_COMPLETION,
+  mode: Mode,
+  // FIXME remove default values
   signature: Signature = new Signature(),
   equations: Seq[TermPair] = Nil,
   goals: Seq[TermPair] = Nil,

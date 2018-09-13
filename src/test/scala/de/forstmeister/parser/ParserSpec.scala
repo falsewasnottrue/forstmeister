@@ -8,8 +8,7 @@ class ParserSpec extends FlatSpec with Matchers {
     val spec = Parser.parse("specs/AbelGruppe.cp")
 
     spec.name should be("group")
-
-    // spec.mode should be(MODE_COMPLETION)
+    spec.mode should be(MODE_COMPLETION)
     // spec.sorts
     // spec.signature
     // spec.variables ??
