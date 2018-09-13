@@ -1,8 +1,10 @@
 package de.forstmeister.domain
 
-import org.scalatest.{FlatSpec, Matchers}
+import org.scalatest.{BeforeAndAfterEach, FlatSpec, Matchers}
 
-class TermSpec extends FlatSpec with Matchers {
+class TermSpec extends FlatSpec with Matchers with BeforeAndAfterEach {
+
+  override def beforeEach(): Unit = VariableSymbol.reset()
 
   "Terms" should "be possibly a variable" in {
     val x = VariableSymbol("x")

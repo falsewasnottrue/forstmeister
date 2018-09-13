@@ -1,8 +1,10 @@
 package de.forstmeister.domain
 
-import org.scalatest.{FlatSpec, Matchers}
+import org.scalatest.{BeforeAndAfterEach, FlatSpec, Matchers}
 
-class SymbolSpec extends FlatSpec with Matchers {
+class SymbolSpec extends FlatSpec with Matchers with BeforeAndAfterEach {
+
+  override def beforeEach(): Unit = VariableSymbol.reset()
 
   "Variables" should "be variables" in {
     val v1 = VariableSymbol("v1")

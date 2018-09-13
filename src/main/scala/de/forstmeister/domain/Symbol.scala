@@ -26,6 +26,10 @@ class VariableSymbol(val name: String, val id: Int) extends Symbol {
 }
 
 object VariableSymbol {
+  def reset() = {
+    counter = 0
+    usedNames.clear()
+  }
   def apply(name: String) = new VariableSymbol(name, nextId)
   def apply() = {
     val id = VariableSymbol.nextId
