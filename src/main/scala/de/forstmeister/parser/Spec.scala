@@ -1,6 +1,6 @@
 package de.forstmeister.parser
 
-import de.forstmeister.domain.{TermOrdering, TermPair}
+import de.forstmeister.domain.{Sort, TermOrdering, TermPair}
 
 sealed trait Mode
 case object MODE_COMPLETION extends Mode
@@ -13,6 +13,7 @@ case object MODE_TERMINATION extends Mode
 case class Spec(
   name: String,
   mode: Mode,
+  sorts: Seq[Sort],
   // FIXME remove default values
   signature: Signature = new Signature(),
   equations: Seq[TermPair] = Nil,

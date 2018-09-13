@@ -13,8 +13,9 @@ case object TK_PROOF extends Token
 case object TK_REDUCTION extends Token
 case object TK_TERMINATION extends Token
 
-case object SORT extends Token
-case object SORTS extends Token
+case object TK_SORT extends Token
+case object TK_SORTS extends Token
+
 case object TK_SIGNATURE extends Token
 case object ORDERING extends Token
 case object VARIABLE extends Token
@@ -41,6 +42,8 @@ object Scanner {
     case "PROOF" ⇒ TK_PROOF
     case "REDUCTION" ⇒ TK_REDUCTION
     case "TERMINATION" ⇒ TK_TERMINATION
+    case "SORT" ⇒ TK_SORT
+    case "SORTS" ⇒ TK_SORTS
 
     case t ⇒ TK_IDENT(t)
   }

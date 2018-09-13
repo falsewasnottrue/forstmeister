@@ -1,5 +1,6 @@
 package de.forstmeister.parser
 
+import de.forstmeister.domain.Sort
 import org.scalatest.{FlatSpec, Matchers}
 
 class ParserSpec extends FlatSpec with Matchers {
@@ -9,6 +10,8 @@ class ParserSpec extends FlatSpec with Matchers {
 
     spec.name should be("group")
     spec.mode should be(MODE_COMPLETION)
+    spec.sorts should be(Seq(Sort("ANY")))
+
     // spec.sorts
     // spec.signature
     // spec.variables ??
